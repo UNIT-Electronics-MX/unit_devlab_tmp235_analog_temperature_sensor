@@ -23,7 +23,7 @@
 ## 📏 Dimensions
 
 <div align="center">
-<a href="./resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png"><img src="./resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png" width="500px"><br/> Dimensions</a>
+<a href="./resources/unit_dimensions_v_1_0_ue0101_TEMP235.png"><img src="./resources/unit_dimensions_v_1_0_ue0101_TEMP235.png" width="500px"><br/> Dimensions</a>
 </div>
 
 ## 📃 Topology
@@ -31,18 +31,18 @@
 <div align="center">
 
 <div align="center">
-<a href="./resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png"><img src="./resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png" width="500px"><br/> Topology</a>
+<a href="./resources/unit_topology_v_1_0_ue0101_TEMP235.png"><img src="./resources/unit_topology_v_1_0_ue0101_TEMP235.png" width="500px"><br/> Topology</a>
 <br/>
 <br/>
 <br/>
 
-| Ref. | Description                              |
-|------|------------------------------------------|
-| IC1  | {{sensor_description}}                   |
-| L1   | Power On LED                             |
-| U1   | {{regulator_description}}                | 
-| JP1  | 2.54 mm Castellated Holes                |
-| J1   | QWIIC Connector (JST 1 mm pitch) for I2C |
+| Ref. | Description                                                                |
+|------|----------------------------------------------------------------------------|
+| IC1  | TEMP235 Temperature Sensor                                                 |
+| L1   | Power On LED                                                               | 
+| JP1  | 2.54 mm Header                                                             |
+| J1   | JST 1 mm pitch for Input Signals                                           |
+| J2   | JST 2 mm pitch (Pads) for Input Signals, Compatible with Gravity Connector |
 
 </div>
 
