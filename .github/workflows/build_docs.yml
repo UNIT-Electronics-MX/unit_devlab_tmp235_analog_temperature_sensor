@@ -1,24 +1,24 @@
-name: 🚀 Build Professional Documentation
+name: Build Documentation
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'software/documentation/**'
+      - 'software/scripts/**'
+      - 'software/README.md'
       - 'hardware/**'
       - 'README.md'
       - '.github/workflows/build_docs.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'software/documentation/**'
+      - 'software/scripts/**'
+      - 'software/README.md'
       - 'hardware/**'
       - 'README.md'
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   build_and_deploy:
@@ -35,69 +35,110 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-        
-    - name: Install dependencies
-      run: |
-        cd software/documentation
-        pip install -r requirements.txt
 
-    - name: Install Chrome
+    - name: Install Python dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y wget gnupg
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+        pip install --upgrade pip
+        pip install -r software/documentation/requirements.txt
+        echo "Python dependencies installed from requirements.txt"
+
+    - name: Setup mdBook
+      uses: peaceiris/actions-mdbook@v2
+      with:
+        mdbook-version: '0.4.52'
+
+    - name: Install Google Chrome (for PDF generation)
+      run: |
+        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
-    - name: Generate professional documentation
+    - name: Generate documentation
       run: |
-        cd software/documentation
-        python generate_professional_pdf.py
-        echo "✅ Professional documentation generated"
+        echo "Starting documentation build..."
+        cd software/scripts
+        python build_docs.py
+        echo "Documentation generated successfully"
 
-    - name: Prepare docs directory
+    - name: Generate Professional PDF Documentation
+      run: |
+        echo "Generating professional datasheet..."
+        cd software/documentation
+        echo "Current directory: $(pwd)"
+        echo "Directory contents before generation:"
+        ls -la
+        python3 generate_professional_pdf.py
+        echo "Directory contents after generation:"
+        ls -la
+        echo "Build directory contents:"
+        ls -la build/ 2>/dev/null || echo "Build directory not found"
+        echo "Professional documentation generation completed"
+
+    - name: Deploy to docs directory
       run: |
         # Create docs directory if it doesn't exist
         mkdir -p docs
         
-        # Copy ALL generated files from build/ to docs/
-        if [ -d "software/documentation/build" ]; then
-          echo "📁 Contents of build directory:"
-          ls -la software/documentation/build/
+        # Copy mdBook documentation
+        if [ -d "software/book/book" ]; then
+          echo "Copying mdBook documentation..."
           
-          # Copy all files from build directory
-          cp -v software/documentation/build/* docs/ 2>/dev/null || echo "Some files might not exist"
-          echo "✅ All build files copied"
+          # Clear existing docs and copy new content
+          rm -rf docs/mdbook
+          mkdir -p docs/mdbook
+          cp -r software/book/book/* docs/mdbook/
+          echo "mdBook documentation copied to docs/mdbook/"
           
-          # Copy images directory if it exists
-          if [ -d "software/documentation/build/images" ]; then
-            cp -r software/documentation/build/images docs/
-            echo "✅ Images directory copied"
-          fi
-          
-          # Specifically copy image files (JPG, PNG, etc.)
-          if ls software/documentation/build/*.jpg >/dev/null 2>&1; then
-            cp -v software/documentation/build/*.jpg docs/
-            echo "✅ JPG files copied"
-          fi
-          if ls software/documentation/build/*.png >/dev/null 2>&1; then
-            cp -v software/documentation/build/*.png docs/
-            echo "✅ PNG files copied"
-          fi
-          
-          echo "📁 Contents of docs directory after copying:"
-          ls -la docs/
+          # Create simple index.html redirect to mdbook
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=./mdbook/index.html"><title>Documentation</title></head><body><p>Redirecting... <a href="./mdbook/index.html">Click here if not redirected</a></p></body></html>' > docs/index.html
+          echo "Index redirect created"
+        else
+          echo "ERROR: No mdBook build found at software/book/book"
+          exit 1
         fi
         
-        # Create simple index.html redirect
-        echo "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Documentation</title><meta http-equiv=\"refresh\" content=\"0; url=datasheet_professional.html\"></head><body><p>Redirecting...</p></body></html>" > docs/index.html
+        # Copy Professional Documentation
+        echo "Checking for professional documentation..."
+        if [ -f "software/documentation/build/datasheet_professional.html" ]; then
+          echo "Found professional datasheet HTML, copying..."
+          cp software/documentation/build/datasheet_professional.html docs/
+          if [ -f "software/documentation/build/datasheet_professional.pdf" ]; then
+            cp software/documentation/build/datasheet_professional.pdf docs/
+            echo "Professional datasheet HTML and PDF copied to docs/"
+          else
+            echo "WARNING: PDF not found at software/documentation/build/datasheet_professional.pdf"
+          fi
+        else
+          echo "ERROR: Professional datasheet HTML not found at software/documentation/build/datasheet_professional.html"
+          echo "Contents of software/documentation/build/:"
+          ls -la software/documentation/build/ 2>/dev/null || echo "Build directory does not exist"
+        fi
+        
+        # Copy images and resources from documentation build
+        if [ -d "software/documentation/build" ]; then
+          echo "Copying images and resources from documentation build..."
+          find software/documentation/build -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.pdf" \) -print -exec cp {} docs/ \;
+          echo "Documentation build resources copied"
+        fi
+        
+        # Copy hardware resources directly
+        if [ -d "hardware/resources" ]; then
+          echo "Copying hardware resources..."
+          find hardware/resources -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.pdf" \) -print -exec cp {} docs/ \;
+          echo "Hardware resources copied"
+        fi
+        
+        echo "Final contents of docs directory:"
+        ls -la docs/
+        echo ""
+        echo "PDF and image files in docs:"
+        find docs/ -type f \( -name "*.pdf" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) -ls
         
         # GitHub Pages setup
         touch docs/.nojekyll
 
     - name: Deploy to repository
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: |
         git config --local user.name "github-actions[bot]"
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -106,4 +147,6 @@ jobs:
         if ! git diff --staged --quiet; then
           git commit -m "Deploy documentation [skip ci]"
           git push origin main
+        else
+          echo "No changes to commit"
         fi
