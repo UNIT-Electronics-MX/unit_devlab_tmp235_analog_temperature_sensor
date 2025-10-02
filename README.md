@@ -35,8 +35,10 @@ The TEMP235 is a high-precision I2C temperature sensor module designed for accur
 
 
 
+<div align="center">
 
-## 📦 Overview
+
+##  Overview
 
 | Feature        | Description                                                                 |
 |----------------|-----------------------------------------------------------------------------|
@@ -48,8 +50,9 @@ The TEMP235 is a high-precision I2C temperature sensor module designed for accur
 | Communication  | I2C (up to 400kHz)                                                        |
 | Power Consumption | 10µA (typical)                                                          |
 
+</div>
 
-## 🧪 Use Cases
+## Use Cases
 
 - Data logging: Store sensor data, logs, or event histories
 - Configuration retention: Preserve device settings or calibration data
@@ -57,7 +60,7 @@ The TEMP235 is a high-precision I2C temperature sensor module designed for accur
 
 
 
-## 📚 Resources
+##  Resources
 
 - [Schematic Diagram](hardware/resources/unit_top_v_1_0_ue0101_TEMP235_schematic.pdf)
 - [Pinout Diagram](hardware/resources/unit_top_v_1_0_ue0101_TEMP235_pinout.pdf)
@@ -74,5 +77,5 @@ See [`LICENSE.md`](LICENSE.md) for details.
 
 
 <div align="center">
-  <sub>Template by UNIT Electronics • Customize this file for your product documentation.</sub>
+  <sub>Template by UNIT Electronics</sub>
 </div>
