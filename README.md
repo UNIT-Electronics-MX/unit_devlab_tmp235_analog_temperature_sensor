@@ -1,5 +1,5 @@
 
-# TEMP235 - I2C Temperature Sensor Module
+# DevLab: TMP235 Analog Temperature Sensor
 
 <div align="center">
   <a href="#"><img src="https://img.shields.io/badge/version-1.0-blue.svg" alt="Version"></a>
