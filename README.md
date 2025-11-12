@@ -11,7 +11,7 @@
 
 ## Introduction
 
-The TEMP235 is a high-precision I2C temperature sensor module designed for accurate temperature measurements in various applications. It features a digital output, low power consumption, and a wide operating voltage range, making it ideal for embedded systems, environmental monitoring, and IoT projects.
+The TEMP235 is a high-precision temperature sensor module designed for accurate temperature measurements in various applications. It features an analogic output, low power consumption, and a wide operating voltage range, making it ideal for embedded systems, environmental monitoring, and IoT projects.
 
 
 
@@ -42,13 +42,15 @@ The TEMP235 is a high-precision I2C temperature sensor module designed for accur
 
 | Feature        | Description                                                                 |
 |----------------|-----------------------------------------------------------------------------|
-| Sensor Type    | Digital Temperature Sensor (I2C Interface)                                  |
+| Sensor Type    | Analog Temperature Sensor                                  |
 | Temperature Range | -40°C to +125°C                                                          |
 | Accuracy       | ±0.5°C                                                                     |
 | Resolution     | 0.1°C                                                                      |
 | Operating Voltage | 2.7V to 5.5V                                                            |
-| Communication  | I2C (up to 400kHz)                                                        |
+| Communication  | Analog                                                       |
 | Power Consumption | 10µA (typical)                                                          |
+
+- Pin header and JST 1mm Interface
 
 </div>
 
