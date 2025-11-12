@@ -50,9 +50,9 @@ The TEMP235 is a high-precision temperature sensor module designed for accurate 
 | Communication  | Analog                                                       |
 | Power Consumption | 10µA (typical)                                                          |
 
-- Pin header and JST 1mm Interface
-
 </div>
+
+- Pin header and JST 1mm Interface
 
 ## Use Cases
 
