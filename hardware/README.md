@@ -114,7 +114,7 @@
 
 </div>
 
-> **Note:** The module also includes a Qwiic/STEMMA QT connector carrying the same four signals (VCC, GND, SDA, SCL) for effortless daisy-chaining.
+> **Note:** The module also includes a JST 1mm and pads for a JST 2mm (Connector not included) carrying the same four signals (VCC, GND, Signal) for effortless daisy-chaining.
 
 ## 📏 Dimensions
 
