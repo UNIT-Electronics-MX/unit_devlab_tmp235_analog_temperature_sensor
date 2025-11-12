@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Functional Description</title>
+        <title>Technical Specifications</title>
 
 
         <!-- Custom HTML head -->
@@ -175,18 +175,71 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="functional-description"><a class="header" href="#functional-description">Functional Description</a></h1>
-<p>{{functional_description}}</p>
-
+                        <h1 id="technical-specifications"><a class="header" href="#technical-specifications">Technical Specifications</a></h1>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center"><strong>Parameter</strong></th><th style="text-align: center"><strong>Description</strong></th><th style="text-align: center"><strong>Min</strong></th><th style="text-align: center"><strong>Typ</strong></th><th style="text-align: center"><strong>Max</strong></th><th style="text-align: center"><strong>Unit</strong></th></tr></thead><tbody>
+<tr><td style="text-align: center">Vcc</td><td style="text-align: center">Input voltage to power on the module</td><td style="text-align: center">2.3</td><td style="text-align: center">-</td><td style="text-align: center">5.5</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Idd</td><td style="text-align: center">Operating current</td><td style="text-align: center">-</td><td style="text-align: center">9(Ta=25°C)</td><td style="text-align: center">17 (Ta=150°C)</td><td style="text-align: center">uA</td></tr>
+<tr><td style="text-align: center">Tacy*</td><td style="text-align: center">Temperature accuracy</td><td style="text-align: center">-2</td><td style="text-align: center">±0.5</td><td style="text-align: center">+2</td><td style="text-align: center">°C</td></tr>
+<tr><td style="text-align: center">V0℃</td><td style="text-align: center">Output voltage offset at 0°C</td><td style="text-align: center">-</td><td style="text-align: center">500</td><td style="text-align: center">-</td><td style="text-align: center">mV</td></tr>
+<tr><td style="text-align: center">Tc</td><td style="text-align: center">Temperature coefficient (sensor gain)</td><td style="text-align: center">-</td><td style="text-align: center">10</td><td style="text-align: center">-</td><td style="text-align: center">mv/°C</td></tr>
+<tr><td style="text-align: center">Iout</td><td style="text-align: center">Output current</td><td style="text-align: center">-</td><td style="text-align: center">-</td><td style="text-align: center">500</td><td style="text-align: center">uA</td></tr>
+</tbody></table>
+</div></div>
+<p>*The accuracy may change with the temperature.</p>
+<h3 id="transfer-table"><a class="header" href="#transfer-table">Transfer table</a></h3>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">TEMPERATURE (°C)</th><th style="text-align: center">VOUT (mV) Ideal linear values</th></tr></thead><tbody>
+<tr><td style="text-align: center">–40</td><td style="text-align: center">100</td></tr>
+<tr><td style="text-align: center">–35</td><td style="text-align: center">150</td></tr>
+<tr><td style="text-align: center">–30</td><td style="text-align: center">200</td></tr>
+<tr><td style="text-align: center">–25</td><td style="text-align: center">250</td></tr>
+<tr><td style="text-align: center">–20</td><td style="text-align: center">300</td></tr>
+<tr><td style="text-align: center">–15</td><td style="text-align: center">350</td></tr>
+<tr><td style="text-align: center">–10</td><td style="text-align: center">400</td></tr>
+<tr><td style="text-align: center">–5</td><td style="text-align: center">450</td></tr>
+<tr><td style="text-align: center">0</td><td style="text-align: center">500</td></tr>
+<tr><td style="text-align: center">5</td><td style="text-align: center">550</td></tr>
+<tr><td style="text-align: center">10</td><td style="text-align: center">600</td></tr>
+<tr><td style="text-align: center">15</td><td style="text-align: center">650</td></tr>
+<tr><td style="text-align: center">20</td><td style="text-align: center">700</td></tr>
+<tr><td style="text-align: center">25</td><td style="text-align: center">750</td></tr>
+<tr><td style="text-align: center">30</td><td style="text-align: center">800</td></tr>
+<tr><td style="text-align: center">35</td><td style="text-align: center">850</td></tr>
+<tr><td style="text-align: center">40</td><td style="text-align: center">900</td></tr>
+<tr><td style="text-align: center">45</td><td style="text-align: center">950</td></tr>
+<tr><td style="text-align: center">50</td><td style="text-align: center">1000</td></tr>
+<tr><td style="text-align: center">55</td><td style="text-align: center">1050</td></tr>
+<tr><td style="text-align: center">60</td><td style="text-align: center">1100</td></tr>
+<tr><td style="text-align: center">65</td><td style="text-align: center">1150</td></tr>
+<tr><td style="text-align: center">70</td><td style="text-align: center">1200</td></tr>
+<tr><td style="text-align: center">75</td><td style="text-align: center">1250</td></tr>
+<tr><td style="text-align: center">80</td><td style="text-align: center">1300</td></tr>
+<tr><td style="text-align: center">85</td><td style="text-align: center">1350</td></tr>
+<tr><td style="text-align: center">90</td><td style="text-align: center">1400</td></tr>
+<tr><td style="text-align: center">95</td><td style="text-align: center">1450</td></tr>
+<tr><td style="text-align: center">100</td><td style="text-align: center">1500</td></tr>
+<tr><td style="text-align: center">105</td><td style="text-align: center">1550</td></tr>
+<tr><td style="text-align: center">110</td><td style="text-align: center">1600</td></tr>
+<tr><td style="text-align: center">115</td><td style="text-align: center">1650</td></tr>
+<tr><td style="text-align: center">120</td><td style="text-align: center">1700</td></tr>
+<tr><td style="text-align: center">125</td><td style="text-align: center">1750</td></tr>
+<tr><td style="text-align: center">130</td><td style="text-align: center">1800</td></tr>
+<tr><td style="text-align: center">135</td><td style="text-align: center">1850</td></tr>
+<tr><td style="text-align: center">140</td><td style="text-align: center">1900</td></tr>
+<tr><td style="text-align: center">145</td><td style="text-align: center">1950</td></tr>
+<tr><td style="text-align: center">150</td><td style="text-align: center">2000</td></tr>
+</tbody></table>
+</div></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../hardware/pin-&amp;-connector-layout.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../hardware/overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../hardware/applications.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../hardware/pinout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -196,11 +249,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../hardware/pin-&amp;-connector-layout.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../hardware/overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../hardware/applications.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../hardware/pinout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
