@@ -65,7 +65,7 @@ The TEMP235 is a high-precision temperature sensor module designed for accurate 
 ##  Resources
 
 - [Schematic Diagram](hardware/resources/unit_top_v_1_0_ue0101_TEMP235_schematic.pdf)
-- [Pinout Diagram](hardware/resources/unit_top_v_1_0_ue0101_TEMP235_pinout.pdf)
+- [Pinout Diagram](hardware/unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.pdf)
 - [Firmware Examples](software/examples)
 - [Getting Started Guide](docs/getting_started.md)
 

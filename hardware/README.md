@@ -71,7 +71,7 @@
 ## 🔌 Pinout
 
 <div align="center">
-    <a href="#"><img src="resources/unit_pinout_v_0_0_1_ue0094_icp10111_barometric_pressure_sensor_en.jpg" width="500px"><br/>Pinout</a>
+    <a href="./unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.pdf"><img src="./resources/unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.jpg" width="500px"><br/>Pinout</a>
     <br/>
     <br/>
     <br/>
