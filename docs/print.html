@@ -432,6 +432,120 @@ See <a href="LICENSE.html"><code>LICENSE.md</code></a> for details.</p>
 <li><a href="https://www.ti.com/lit/ds/symlink/tmp235.pdf?ts=1762988208357&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fes-mx%252FTMP235"> TMP235 Datasheet </a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p><strong>Arduino &amp; MicroPython Examples – Pulsar C6 (ESP32-C6)</strong></p>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>This repository provides <strong>reference test code</strong> for the <strong>TMP235 analog temperature sensor</strong>, validated on the <strong>Pulsar C6 (ESP32-C6)</strong> platform.
+Both <strong>Arduino</strong> and <strong>MicroPython</strong> implementations are included, following the <strong>official linear voltage–temperature curve</strong> of the sensor.</p>
+<p>The goal of this project is to offer a <strong>simple, reliable, and well-documented baseline</strong> for temperature measurements using the ESP32 ADC.</p>
+<h2 id="sensor-characteristics-tmp235"><a class="header" href="#sensor-characteristics-tmp235">Sensor Characteristics (TMP235)</a></h2>
+<p>The TMP235 is a <strong>linear analog temperature sensor</strong> with the following behavior:</p>
+<ul>
+<li>Linear output: <strong>10 mV / °C</strong></li>
+<li>Output offset: <strong>500 mV at 0 °C</strong></li>
+<li>Operating range (typical): <strong>–40 °C to +150 °C</strong></li>
+<li>Supply voltage: <strong>3.0 – 5.5 V</strong> (3.3 V recommended)</li>
+</ul>
+<h3 id="ideal-linear-curve"><a class="header" href="#ideal-linear-curve">Ideal Linear Curve</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Temperature (°C)</th><th>Output Voltage (mV)</th></tr></thead><tbody>
+<tr><td>0</td><td>500</td></tr>
+<tr><td>25</td><td>750</td></tr>
+<tr><td>50</td><td>1000</td></tr>
+<tr><td>100</td><td>1500</td></tr>
+<tr><td>150</td><td>2000</td></tr>
+</tbody></table>
+</div>
+<h3 id="conversion-formula"><a class="header" href="#conversion-formula">Conversion Formula</a></h3>
+<pre><code>Temperature (°C) = (Vout_mV − 500) / 10
+</code></pre>
+<h2 id="hardware-connection-pulsar-c6"><a class="header" href="#hardware-connection-pulsar-c6">Hardware Connection (Pulsar C6)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>TMP235 Pin</th><th>Pulsar C6</th></tr></thead><tbody>
+<tr><td>VCC</td><td>3.3 V</td></tr>
+<tr><td>GND</td><td>GND</td></tr>
+<tr><td>VOUT</td><td>GPIO 6 (ADC)</td></tr>
+</tbody></table>
+</div>
+<h2 id="arduino-version"><a class="header" href="#arduino-version">Arduino Version</a></h2>
+<h3 id="features"><a class="header" href="#features">Features</a></h3>
+<ul>
+<li>Uses ESP32 ADC with 12-bit resolution</li>
+<li>ADC attenuation set for 0–3.3 V</li>
+<li>Averaged readings for stability</li>
+<li>Temperature calculation based on TMP235 curve</li>
+</ul>
+<h3 id="core-code-snippet"><a class="header" href="#core-code-snippet">Core Code Snippet</a></h3>
+<pre><code class="language-cpp">float voltage = (raw / 4095.0) * 3.3;
+float temperatureC = (voltage - 0.5) * 100.0;
+</code></pre>
+<h3 id="expected-output-serial-monitor"><a class="header" href="#expected-output-serial-monitor">Expected Output (Serial Monitor)</a></h3>
+<pre><code>Raw: 930 | Voltage: 0.750 V | Temp: 25.0 °C
+Raw: 990 | Voltage: 0.800 V | Temp: 30.0 °C
+</code></pre>
+<h2 id="micropython-version"><a class="header" href="#micropython-version">MicroPython Version</a></h2>
+<h3 id="features-1"><a class="header" href="#features-1">Features</a></h3>
+<ul>
+<li>Native MicroPython ADC usage</li>
+<li>12-bit ADC resolution</li>
+<li>Software averaging</li>
+<li>Same linear conversion model as Arduino</li>
+</ul>
+<h3 id="core-code-snippet-1"><a class="header" href="#core-code-snippet-1">Core Code Snippet</a></h3>
+<pre><code class="language-python">voltage_mv = (raw / 4095) * 3300
+temperature_c = (voltage_mv - 500) / 10
+</code></pre>
+<h3 id="example-output"><a class="header" href="#example-output">Example Output</a></h3>
+<pre><code>ADC: 930 | Voltage: 750.0 mV | Temp: 25.0 °C
+ADC: 985 | Voltage: 800.4 mV | Temp: 30.0 °C
+</code></pre>
+<h2 id="validation--debugging-guide"><a class="header" href="#validation--debugging-guide">Validation &amp; Debugging Guide</a></h2>
+<h3 id="quick-sanity-check"><a class="header" href="#quick-sanity-check">Quick Sanity Check</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Condition</th><th>Expected Voltage</th></tr></thead><tbody>
+<tr><td>Room temperature (~25 °C)</td><td>~750 mV</td></tr>
+<tr><td>Touching sensor</td><td>Voltage rises</td></tr>
+<tr><td>Cold environment</td><td>&lt;700 mV</td></tr>
+</tbody></table>
+</div>
+<h3 id="common-issues"><a class="header" href="#common-issues">Common Issues</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Symptom</th><th>Likely Cause</th></tr></thead><tbody>
+<tr><td>Always ~10 °C</td><td>Environment really cold or wrong expectation</td></tr>
+<tr><td>Noisy readings</td><td>Missing capacitors</td></tr>
+<tr><td>Very low voltage</td><td>Wrong pin or wiring</td></tr>
+<tr><td>Wrong temperature</td><td>Using TMP36 formula instead of TMP235</td></tr>
+</tbody></table>
+</div>
+<h2 id="notes-on-esp32-adc"><a class="header" href="#notes-on-esp32-adc">Notes on ESP32 ADC</a></h2>
+<ul>
+<li>
+<p>ESP32 ADC is <strong>not perfectly linear</strong></p>
+</li>
+<li>
+<p>For relative and ambient measurements, this approach is sufficient</p>
+</li>
+<li>
+<p>For precision applications:</p>
+<ul>
+<li>Use calibration</li>
+<li>Consider an external ADC</li>
+<li>Perform two-point calibration in software</li>
+</ul>
+</li>
+</ul>
+<h2 id="applications"><a class="header" href="#applications">Applications</a></h2>
+<ul>
+<li>Embedded temperature monitoring</li>
+<li>Environmental sensing</li>
+<li>Board thermal validation</li>
+<li>DevLab / Pulsar module testing</li>
+<li>Educational ADC examples</li>
+</ul>
+<h2 id="compatibility"><a class="header" href="#compatibility">Compatibility</a></h2>
+<ul>
+<li>Pulsar C6 (ESP32-C6)</li>
+<li>Arduino-ESP32 core</li>
+<li>MicroPython (ESP32 build)</li>
+</ul>
+<h2 id="license-1"><a class="header" href="#license-1">License</a></h2>
+<p>MIT License
+Feel free to use, modify, and integrate into DevLab or UNIT Electronics projects.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
 <h2 id="arduinoc-examples"><a class="header" href="#arduinoc-examples">Arduino/C++ Examples</a></h2>
 <p>The following examples demonstrate various features of this development board.</p>
@@ -464,7 +578,7 @@ See <a href="LICENSE.html"><code>LICENSE.md</code></a> for details.</p>
 </div>
 <hr />
 <p><em>Hardware documentation extracted from project files.</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="license-1"><a class="header" href="#license-1">License</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="license-2"><a class="header" href="#license-2">License</a></h1>
 <p>MIT License</p>
 <p>Copyright (c) 2025 UNIT-Electronics-MX</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
