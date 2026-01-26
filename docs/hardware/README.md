@@ -1,10 +1,8 @@
-# Hardware Documentation
+# Hardware
 
 <div align="center">
 <a href="{{schematic_url}}"><img src="resources/Schematics_icon.jpg?raw=false" width="200px"><br/>Schematic</a>
 </div>
-
-> **Note:** This documentation is automatically deployed via GitHub Actions workflow when changes are made to hardware files.
 
 ## Technical Specifications
 
