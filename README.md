@@ -11,7 +11,7 @@
 
 ## Introduction
 
-The TEMP235 is a high-precision temperature sensor module designed for accurate temperature measurements in various applications. It features an analogic output, low power consumption, and a wide operating voltage range, making it ideal for embedded systems, environmental monitoring, and IoT projects.
+The TMP235 is a high-precision temperature sensor module designed for accurate temperature measurements in various applications. It features an analogic output, low power consumption, and a wide operating voltage range, making it ideal for embedded systems, environmental monitoring, and IoT projects.
 
 
 
