@@ -17,7 +17,7 @@ The TMP235 is a high-precision temperature sensor module designed for accurate t
 
 <div align="center">
   <img src="hardware/resources/unit_top_v_1_0_ue0101_TEMP235.png" width="450px" alt="Product Image">
-  <p><em>Temp235</em></p>
+  <p><em>DevLab: TMP235 Analog Temperature Sensor</em></p>
 </div>
 
 
