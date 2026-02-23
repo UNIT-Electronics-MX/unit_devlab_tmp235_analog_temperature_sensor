@@ -29,7 +29,7 @@ The TMP235 is a high-precision temperature sensor module designed for accurate t
 [<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](https://unit-electronics-mx.github.io/unit_temp235_sensor_module/)
 [<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](hardware/resources/)
 [<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
-[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://unit-electronics-mx.github.io/unit_temp235_sensor_module/software/getting-started)
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
 
 </div>
 
@@ -67,7 +67,6 @@ The TMP235 is a high-precision temperature sensor module designed for accurate t
 - [Schematic Diagram](hardware/resources/unit_top_v_1_0_ue0101_TEMP235_schematic.pdf)
 - [Pinout Diagram](hardware/unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.pdf)
 - [Firmware Examples](software/examples)
-- [Getting Started Guide](docs/getting_started.md)
 
 ## License
 

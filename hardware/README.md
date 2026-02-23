@@ -1,7 +1,7 @@
 # Hardware
 
 <div align="center">
-<a href="{{schematic_url}}"><img src="resources/Schematics_icon.jpg?raw=false" width="200px"><br/>Schematic</a>
+<a href="./unit_sch_v_1_0_0_ue0101_tmp235_temperature_sensor.pdf"><img src="resources/Schematics_icon.jpg?raw=false" width="200px"><br/>Schematic</a>
 </div>
 
 ## Technical Specifications
