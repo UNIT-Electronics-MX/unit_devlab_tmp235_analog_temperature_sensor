@@ -64,7 +64,7 @@ The TMP235 is a high-precision temperature sensor module designed for accurate t
 
 ##  Resources
 
-- [Schematic Diagram](hardware/resources/unit_sch_v_1_0_0_ue0101_tmp235_temperature_sensor.pdf)
+- [Schematic Diagram](hardware/unit_sch_v_1_0_0_ue0101_tmp235_temperature_sensor.pdf)
 - [Pinout Diagram](hardware/unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.pdf)
 - [Firmware Examples](software/examples)
 
