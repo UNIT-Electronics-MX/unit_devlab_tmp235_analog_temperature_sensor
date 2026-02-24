@@ -68,7 +68,7 @@
 
 </div>
 
-## 🔌 Pinout
+## Pinout
 
 <div align="center">
     <a href="./unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.pdf"><img src="./resources/unit_pinout_v_0_0_1_ue0101_tmp235_analog_temperature_sensor_en.jpg" width="500px"><br/>Pinout</a>
@@ -84,7 +84,7 @@
 
 </div>
 
-## 📃 Topology
+##  Topology
 
 <div align="center">
 <a href="./resources/unit_topology_v_1_0_ue0101_TEMP235.png"><img src="./resources/unit_topology_v_1_0_ue0101_TEMP235.png" width="500px"><br/> Topology</a>
@@ -116,7 +116,7 @@
 
 > **Note:** The module also includes a JST 1mm and pads for a JST 2mm (Connector not included) carrying the same four signals (VCC, GND, Signal) for effortless daisy-chaining.
 
-## 📏 Dimensions
+## Dimensions
 
 <div align="center">
 <a href="./resources/unit_dimensions_v_1_0_ue0101_TEMP235.png"><img src="./resources/unit_dimensions_v_1_0_ue0101_TEMP235.png" width="500px"><br/> Dimensions</a>
